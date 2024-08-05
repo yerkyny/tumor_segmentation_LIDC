@@ -133,9 +133,3 @@ The best model weights, based on the `mean_dice_val` metric, are automatically s
 ```
 
 Ensure this directory exists and has the appropriate permissions for saving the checkpoint files.
-
-
-## Author
-
-This segmentation project was developed by Yerkyn Yesbay.
-Email: yesbay185@gmail.com

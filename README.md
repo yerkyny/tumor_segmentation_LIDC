@@ -17,18 +17,31 @@ Ensure you have the following installed:
 ## Directory Structure
 
 The pipeline is organized as follows:
+
 ├── datasets
+
 │   ├── __init__.py
+
 │   ├── tumor_datasets.py
+
 ├── experiments
+
 │   └── baseline.yaml
+
 ├── learning
+
 │   ├── __init__.py
+
 │   └── tumor_learning.py
+
 ├── pipeline.py
+
 ├── transforms
+
 │   ├── __init__.py
+
 │   └── transforms.py
+
 └── utils.py
 
 

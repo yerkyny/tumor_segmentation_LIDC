@@ -18,32 +18,32 @@ Ensure you have the following installed:
 
 The pipeline is organized as follows:
 
-├── datasets
-
-│   ├── __init__.py
-
-│   ├── tumor_datasets.py
-
-├── experiments
-
-│   └── baseline.yaml
-
-├── learning
-
-│   ├── __init__.py
-
-│   └── tumor_learning.py
-
-├── pipeline.py
-
-├── transforms
-
-│   ├── __init__.py
-
-│   └── transforms.py
-
-└── utils.py
-
+├── Makefile \
+├── README.md \
+├── data \
+│   ├── img \
+│   ├── seg \
+│   ├── tumor_test_dataset.csv \
+│   └── tumor_train_dataset.csv \
+├── logs \
+├── notebooks \
+│   ├── to_folds.ipynb \
+│   └── visualization.ipynb \
+├── pipeline \
+│   ├── datasets \
+│   │   ├── __init__.py \
+│   │   └── tumor_datasets.py \
+│   ├── experiments \
+│   │   └── baseline.yaml \
+│   ├── learning \
+│   │   ├── __init__.py \
+│   │   └── tumor_learning.py \
+│   ├── pipeline.py \
+│   ├── transforms \
+│   │   ├── __init__.py \
+│   │   └── transforms.py \
+│   └── utils.py \
+└── requirements.txt 
 
 ## Data preprocessing
 To prepare the input data for the model, a CSV file is generated using the `to_folds.ipynb` notebook. This CSV file contains pairs of `cts_path` and `masks_path`, where each row represents a CT scan and its corresponding segmentation mask.

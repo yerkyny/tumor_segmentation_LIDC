@@ -1,0 +1,95 @@
+FILE:
+  TRAIN: "/home/gulden/tumor_seg/data/tumor_train_dataset.csv" 
+  TEST: "/home/gulden/tumor_seg/data/tumor_test_dataset.csv"
+  FOLD: 1
+
+
+DATASET:
+  PY: datasets
+  CLASS: TumorDataset
+
+
+TRANSFORMS:
+  PY: transforms
+  PRE_TRANS: pre_transforms
+  AUGMENTATIONS: augmentations 
+  POST_TRANS: post_transforms
+
+
+DATALOADER:
+  BATCH_SIZE: 16
+  NUM_WORKERS: 0
+
+
+MODEL:
+  PY: monai.networks.nets
+  ARCH: Unet
+  ARGS:
+      spatial_dims: 3
+      in_channels: 1
+      out_channels: 1
+      channels: [16, 32, 64, 128, 256]
+      strides: [2, 2, 2, 2]
+      num_res_units: 2
+
+CRITERION:
+  PY: monai.losses
+  CLASS: DiceLoss
+  ARGS:
+    sigmoid: True
+
+
+OPTIMIZER:
+  PY: torch.optim
+  CLASS: AdamW
+  ARGS:
+    lr: 0.0001
+
+
+SCHEDULER:
+  PY: torch.optim.lr_scheduler
+  CLASS: CosineAnnealingWarmRestarts
+  ARGS:
+    T_0: 1
+    T_mult: 2
+
+
+EARLY_STOPPING:
+  ENABLE: True
+  ARGS:
+    monitor: "mean_dice_val"
+    min_delta: 0.00
+    patience: 120
+    verbose: True
+    mode: "max"
+
+
+CHECKPOINT:
+  ARGS:
+    save_top_k: 1
+    verbose: True
+    monitor: "mean_dice_val"
+    mode: "max"
+    dirpath: "/home/gulden/tumor_seg/logs/unet_test_tumor/"
+
+
+LEARNER:
+  PY: learning
+  CLASS: Learner
+
+
+SW: 
+  APPLY: False
+  ROI_SIZE: [256, 256, 256]
+  SW_BATCH_SIZE: 4
+
+
+TRAINER:
+  EPOCHS: 5
+  GPUS: [0]
+  GRAD_CLIP: Null # 0.1
+  GRAD_ACC: Null # 64
+
+
+SEED: 42
+K_SAMPLES: 2

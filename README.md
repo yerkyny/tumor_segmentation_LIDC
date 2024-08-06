@@ -16,7 +16,7 @@ Ensure you have the following installed:
 
 ## Directory Structure
 
-The pipeline is organized as follows:
+The directory is organized as follows:
 
 ├── Makefile \
 ├── README.md \

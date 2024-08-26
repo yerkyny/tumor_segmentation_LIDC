@@ -1,6 +1,6 @@
 FILE:
-  TRAIN: "/home/gulden/tumor_seg/data/tumor_train_dataset.csv" 
-  TEST: "/home/gulden/tumor_seg/data/tumor_test_dataset.csv"
+  TRAIN: "../../data/tumor_train_dataset.csv"
+  TEST: "../../data/tumor_test_dataset.csv"
   FOLD: 1
 
 
@@ -70,7 +70,7 @@ CHECKPOINT:
     verbose: True
     monitor: "mean_dice_val"
     mode: "max"
-    dirpath: "/home/gulden/tumor_seg/logs/unet_test_tumor/"
+    dirpath: "../../logs/unet_test_tumor/"
 
 
 LEARNER:

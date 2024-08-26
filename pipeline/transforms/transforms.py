@@ -6,7 +6,7 @@ def pre_transforms(image, mask):
     noise = np.random.normal(loc=0, scale=20, size=image.shape)
     noisy_slice = image + noise
     noisy_slice = np.clip(noisy_slice, -1024, 300)
-    return image, mask
+    return noisy_slice, mask
 
 
 def augmentations():
